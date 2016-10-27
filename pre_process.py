@@ -1,15 +1,31 @@
 import os
-import matplotlib.pyplot as plt
-
 
 def pre_process(file_name_twitter, file_name_wiki):
     ROOT = os.path.abspath(os.path.dirname(__file__))
 
-    f = open(ROOT + '/Documents/Sem 9@iitd/MTP' + file_name_twitter + '.txt', 'r')
-    lines = f.read().splitlines()
+    f = open(ROOT + '/MTP' + file_name_twitter + '.txt', 'r')
+    lines_1 = f.read().splitlines()
     f.close()
 
-    print lines[1]
+    f = open(ROOT + '/MTP' + file_name_wiki + '.txt', 'r')
+    lines_2 = f.read().splitlines()
+    f.close()
+
+    # twitter vocabulary
+    v_twitter = []
+    for line in lines_1:
+        word = line.split(' ', 1)[0]
+        v_twitter.append(word)
+
+    v_wiki = []
+    for line in lines_2:
+        word = line.split(' ', 1)[0]
+        v_wiki.append(word)
+
+    # wiki vocabulary
+        
+
+
     # features = []  # list of all the features
 
     # if not os.path.exists(ROOT + '/filtered_data'):
@@ -73,4 +89,4 @@ def pre_process(file_name_twitter, file_name_wiki):
     # return features
 
 
-pre_process('/twitter/glove.twitter.27B.25d.txt','/wiki/glove.6B.50d.txt')
+pre_process('/twitter/glove.twitter.27B.25d','/wiki/glove.6B.50d')
